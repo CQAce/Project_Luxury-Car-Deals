@@ -1,0 +1,79 @@
+@media (max-width: 1024px) {
+    /* контейнер для бургера */
+    .header__menu_icon {
+        position: relative;
+        display: block;
+        width: 30px;
+        height: 18px;
+        z-index: 5;
+    }
+
+/* создание трёх полосок */
+    .header__menu_icon span,
+    .header__menu_icon::before,
+    .header__menu_icon::after {
+        content: ' ';
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 10%;
+        transition: all 0.3s ease 0s;
+        background-color: #EE8313;
+    }
+    .header__menu_icon::before {
+        top: 0px;
+    }
+    .header__menu_icon span {
+        top: 50%;
+        transform: translateY(-50%) scale(1);
+    }
+    .header__menu_icon::after {
+        bottom: 0px;
+    }
+
+
+    .header__menu_icon._active::before {
+        top: 50%;
+        transform: rotate(-45deg) translateY(-50%);
+    }
+    .header__menu_icon._active span {
+        transform: scale(0);
+    }
+    .header__menu_icon._active::after {
+        bottom: 50%;
+        transform: rotate(45deg) translateY(50%);
+    }
+
+    .header__menu_icon._active::before,
+    .header__menu_icon._active::after {
+        background-color: #fff;
+    }
+
+
+/* расмоложение самого меню */
+.header__menu {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(253,187,45,1) 50%, rgba(0,0,0,0.9) 100%);
+    padding: 100px 30px 30px 30px;
+    transition: left 0.6s ease 0s;
+    overflow: auto;
+}
+.header__menu._active {
+    left: 0;
+}
+
+/* свойства пунктов меню */
+.header__list {
+    display: block;
+}
+.header__list li:not(:last-child) {
+    margin: 0px 0px 30px 0px;
+}
+.header__link {
+    font-size: 24px;
+}
+}
